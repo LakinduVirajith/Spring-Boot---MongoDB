@@ -31,6 +31,7 @@
   - [Explanation](#explanation)
 - [Spring Boot Annotations](#spring-boot-annotations)
   - [Document](#document)
+  - [JsonInclude](#jsoninclude)
 
 ---
 
@@ -148,3 +149,11 @@ The `@Document` annotation is used to mark a Java class as a document that shoul
 
 ```java
 @Document(collection = "person")
+```
+## JsonInclude
+
+This annotation tells Jackson, the library used for JSON serialization and deserialization, to exclude properties with null values when converting Java objects to JSON. It ensures that only properties with non-null values are included in the JSON output.
+
+```java
+@JsonInclude(JsonInclude.Include.NON_NULL)
+```
