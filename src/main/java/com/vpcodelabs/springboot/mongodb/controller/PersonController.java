@@ -34,4 +34,10 @@ public class PersonController {
     public void delete(@PathVariable String id){
         personService.delete(id);
     }
+
+    @GetMapping("/age")
+    @Operation(summary = "get person by age", description = "retrieve all persons details based on age range")
+    public List<Person> getByPersonAge(@RequestParam Integer minAge, @RequestParam Integer maxAge){
+        return personService.getByPersonAge(minAge, maxAge);
+    }
 }
