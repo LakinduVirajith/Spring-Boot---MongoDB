@@ -5,10 +5,9 @@ import com.vpcodelabs.springboot.mongodb.service.PersonService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -22,5 +21,11 @@ public class PersonController {
     @Operation(summary = "create person", description = "record a new person details by providing the necessary details.")
     public String save(@RequestBody Person person){
         return personService.save(person);
+    }
+
+    @GetMapping
+    @Operation(summary = "get persons based on name", description = "retrieve all persons details start with given name")
+    public List<Person> getPersonStartWith(@RequestParam("name") String name){
+        return personService.getPersonStartWith(name);
     }
 }
