@@ -26,6 +26,7 @@
   - [MongoDB Driver](#mongodb-driver)
   - [Lombok](#lombok)
   - [JSON Path](#json-path)
+  - [Springfox](#springfox)
 - [Database Connection](#database-connection)
   - [Sample Code Using YML](#sample-code-using-yml)
   - [Explanation](#explanation)
@@ -83,6 +84,11 @@ To start using Spring Data MongoDB, include the appropriate dependencies in your
 - Enables extracting specific values from JSON documents.
 - Useful for parsing and manipulating JSON data structures efficiently.
 
+## Openapi / Swagger
+
+- Integration with Spring MVC and Spring Boot for generating Swagger/OpenAPI documentation.
+- A Swagger UI interface for exploring and testing APIs directly from the browser.
+- Simplified configuration for adding Swagger documentation to Spring-based applications.
 ---
 
 # Database Connection

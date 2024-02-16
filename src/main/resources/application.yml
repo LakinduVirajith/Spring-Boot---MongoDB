@@ -14,7 +14,7 @@ spring:
   data:
     mongodb:
       uri: uri
-      database: person
+      database: spring-boot-dev
 
 ---
 
@@ -25,4 +25,4 @@ spring:
   data:
     mongodb:
       uri: uri
-      database: person
+      database: spring-boot-prod
