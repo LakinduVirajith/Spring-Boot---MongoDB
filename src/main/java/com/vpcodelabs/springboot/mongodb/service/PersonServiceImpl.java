@@ -22,4 +22,9 @@ public class PersonServiceImpl implements PersonService {
     public List<Person> getPersonStartWith(String name) {
         return personRepository.findByFirstNameStartsWith(name);
     }
+
+    @Override
+    public void delete(String id) {
+        personRepository.deleteById(id);
+    }
 }

@@ -28,4 +28,10 @@ public class PersonController {
     public List<Person> getPersonStartWith(@RequestParam("name") String name){
         return personService.getPersonStartWith(name);
     }
+
+    @DeleteMapping("/{id}")
+    @Operation(summary = "delete person", description = "delete person based on id")
+    public void delete(@PathVariable String id){
+        personService.delete(id);
+    }
 }
