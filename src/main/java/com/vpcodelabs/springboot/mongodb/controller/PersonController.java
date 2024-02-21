@@ -5,6 +5,7 @@ import com.vpcodelabs.springboot.mongodb.service.PersonService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
+import org.bson.Document;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -54,5 +55,17 @@ public class PersonController {
                                      @RequestParam(defaultValue = "5") Integer size){
         Pageable pageable = PageRequest.of(page, size);
         return personService.search(name, minAge, maxAge, city, pageable);
+    }
+
+    @GetMapping("/oldest-person")
+    @Operation(summary = "get oldest person by cities", description = "using aggregation and mongo template fetch oldest person by cities")
+    public List<Document> getOldestPerson(){
+        return personService.getOldestPersonByCity();
+    }
+
+    @GetMapping("/population-by-city")
+    @Operation(summary = "get population by cities", description = "using aggregation and mongo template fetch population by cities")
+    public List<Document> getPopulationByCity(){
+        return personService.getPopulationByCity();
     }
 }
