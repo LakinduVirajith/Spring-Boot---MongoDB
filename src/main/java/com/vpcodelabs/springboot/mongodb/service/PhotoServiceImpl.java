@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -23,5 +24,16 @@ public class PhotoServiceImpl implements PhotoService{
         photo.setPhoto(new Binary(BsonBinarySubType.BINARY ,image.getBytes()));
 
         return photoRepository.save(photo).getId();
+    }
+
+    @Override
+    public Photo getPhoto(String id) {
+        Optional<Photo> optionalPhoto = photoRepository.findById(id);
+        Photo photo = new Photo();
+
+        if(optionalPhoto.isPresent()){
+            photo = optionalPhoto.get();
+        }
+        return photo;
     }
 }
