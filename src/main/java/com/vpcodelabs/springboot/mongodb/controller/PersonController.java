@@ -5,6 +5,9 @@ import com.vpcodelabs.springboot.mongodb.service.PersonService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -39,5 +42,17 @@ public class PersonController {
     @Operation(summary = "get person by age", description = "retrieve all persons details based on age range")
     public List<Person> getByPersonAge(@RequestParam Integer minAge, @RequestParam Integer maxAge){
         return personService.getByPersonAge(minAge, maxAge);
+    }
+
+    @GetMapping("/search")
+    @Operation(summary = "search person by following", description = "search all person details based on name, minAge, maxAge or city")
+    public Page<Person> searchPerson(@RequestParam(required = false) String name,
+                                     @RequestParam(required = false) Integer minAge,
+                                     @RequestParam(required = false) Integer maxAge,
+                                     @RequestParam(required = false) String city,
+                                     @RequestParam(defaultValue = "0") Integer page,
+                                     @RequestParam(defaultValue = "5") Integer size){
+        Pageable pageable = PageRequest.of(page, size);
+        return personService.search(name, minAge, maxAge, city, pageable);
     }
 }
