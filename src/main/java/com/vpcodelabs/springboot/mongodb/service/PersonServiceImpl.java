@@ -22,7 +22,6 @@ import java.util.List;
 public class PersonServiceImpl implements PersonService {
 
     private final PersonRepository personRepository;
-
     private final MongoTemplate mongoTemplate;
 
     @Override
