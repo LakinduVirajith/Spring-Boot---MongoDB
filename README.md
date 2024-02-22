@@ -26,11 +26,13 @@
   - [MongoDB Driver](#mongodb-driver)
   - [Lombok](#lombok)
   - [JSON Path](#json-path)
+  - [Springfox](#springfox)
 - [Database Connection](#database-connection)
   - [Sample Code Using YML](#sample-code-using-yml)
   - [Explanation](#explanation)
 - [Spring Boot Annotations](#spring-boot-annotations)
   - [Document](#document)
+  - [JsonInclude](#jsoninclude)
 
 ---
 
@@ -82,6 +84,11 @@ To start using Spring Data MongoDB, include the appropriate dependencies in your
 - Enables extracting specific values from JSON documents.
 - Useful for parsing and manipulating JSON data structures efficiently.
 
+## Openapi / Swagger
+
+- Integration with Spring MVC and Spring Boot for generating Swagger/OpenAPI documentation.
+- A Swagger UI interface for exploring and testing APIs directly from the browser.
+- Simplified configuration for adding Swagger documentation to Spring-based applications.
 ---
 
 # Database Connection
@@ -148,3 +155,11 @@ The `@Document` annotation is used to mark a Java class as a document that shoul
 
 ```java
 @Document(collection = "person")
+```
+## JsonInclude
+
+This annotation tells Jackson, the library used for JSON serialization and deserialization, to exclude properties with null values when converting Java objects to JSON. It ensures that only properties with non-null values are included in the JSON output.
+
+```java
+@JsonInclude(JsonInclude.Include.NON_NULL)
+```

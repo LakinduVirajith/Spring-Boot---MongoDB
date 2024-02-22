@@ -4,6 +4,11 @@ server:
 spring:
   profiles:
     active: dev
+  servlet:
+    multipart:
+      enabled: true
+      max-request-size: 6MB
+      max-file-size: 6MB
 
 ---
 
@@ -14,7 +19,7 @@ spring:
   data:
     mongodb:
       uri: uri
-      database: person
+      database: spring-boot-dev
 
 ---
 
@@ -25,4 +30,4 @@ spring:
   data:
     mongodb:
       uri: uri
-      database: person
+      database: spring-boot-prod
